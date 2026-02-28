@@ -649,6 +649,14 @@ body::before {
   margin-bottom: 0.25rem;
 }
 
+.timeline-subtitle {
+  font-family: var(--font-body);
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+  color: var(--color-burgundy-light);
+  margin-bottom: 0.35rem;
+  font-style: italic;
+}
+
 .timeline-location {
   font-family: 'DM Sans', sans-serif;
   font-size: clamp(0.85rem, 1.5vw, 0.95rem);
