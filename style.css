@@ -299,7 +299,7 @@ body::before {
   -webkit-text-fill-color: rgba(224, 200, 114, 0.8);
   color: rgba(224, 200, 114, 0.8);
   margin-top: -0.6em;
-  margin-bottom: 0;
+  margin-bottom: 0.4em;
   line-height: 1.2;
 }
 
