@@ -251,12 +251,24 @@
         pad2(d.getUTCSeconds()) + 'Z';
     }
 
+    /* RFC 5545: fold lines longer than 75 octets */
+    function foldLine(line) {
+      if (line.length <= 75) return line;
+      var result = line.substring(0, 75);
+      var pos = 75;
+      while (pos < line.length) {
+        result += '\r\n ' + line.substring(pos, pos + 74);
+        pos += 74;
+      }
+      return result;
+    }
+
     function buildICS(ev) {
       var stamp = dtstamp();
-      return [
+      var lines = [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//Abin Shanthal Wedding//EN',
+        'PRODID:-//Abin Shanthal Wedding//NONSGML v1.0//EN',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         'BEGIN:VEVENT',
@@ -272,16 +284,17 @@
         'BEGIN:VALARM',
         'TRIGGER:-P7D',
         'ACTION:DISPLAY',
-        'DESCRIPTION:Reminder - ' + ev.summary + ' is in 1 week',
+        'DESCRIPTION:Reminder',
         'END:VALARM',
         'BEGIN:VALARM',
         'TRIGGER:-P1D',
         'ACTION:DISPLAY',
-        'DESCRIPTION:Reminder - ' + ev.summary + ' is tomorrow',
+        'DESCRIPTION:Reminder',
         'END:VALARM',
         'END:VEVENT',
         'END:VCALENDAR',
-      ].join('\r\n');
+      ];
+      return lines.map(foldLine).join('\r\n');
     }
 
     function attach(btnId, ev) {
