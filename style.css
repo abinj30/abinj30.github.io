@@ -27,8 +27,8 @@
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Cormorant Garamond', Garamond, serif;
-  --font-script: 'Great Vibes', cursive;
-  --font-hero-script: 'Allura', 'Great Vibes', cursive;
+  --font-script: 'Arial', sans-serif;
+  --font-hero-script: 'Allura', 'Pacifico', cursive;
 
   /* Spacing */
   --section-padding: 5rem 2rem;
@@ -425,7 +425,7 @@ body::before {
 .person-card .role-label {
   font-family: var(--font-body);
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-gold-dark);
@@ -445,7 +445,7 @@ body::before {
   color: var(--color-text);
   margin-bottom: 0.35rem;
   line-height: 1.7;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .person-card .parent-info .label {
@@ -459,7 +459,7 @@ body::before {
   color: var(--color-text-light);
   margin-top: 1rem;
   font-style: italic;
-  font-weight: 400;
+  font-weight: 800;
 }
 
 /* ── EVENT SECTION ───────────────────────────────── */
