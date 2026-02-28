@@ -27,6 +27,10 @@
       heroDate: 'April 26 & May 9, 2026',
       countdownTarget: new Date('2026-04-26T16:00:00+05:30'),
       countdownLabel: 'Until the Betrothal',
+      countdownAlt: {
+        target: new Date('2026-05-09T11:00:00+05:30'),
+        label: 'Until the Wedding',
+      },
       compliments: [
         { name: 'Alphonsa &amp; Jojo', primary: true },
         { name: 'Anton &middot; Anson', primary: false },
@@ -50,6 +54,10 @@
       heroDate: 'April 26 & May 9, 2026',
       countdownTarget: new Date('2026-04-26T16:00:00+05:30'),
       countdownLabel: 'Until the Betrothal',
+      countdownAlt: {
+        target: new Date('2026-05-09T11:00:00+05:30'),
+        label: 'Until the Wedding',
+      },
       compliments: [
         { name: 'Sharon Denny', primary: true },
       ],
@@ -71,7 +79,7 @@
     hideLanding();
     applyView(VIEWS[viewKey]);
     initScrollReveal();
-    initCountdown(VIEWS[viewKey].countdownTarget, VIEWS[viewKey].countdownLabel);
+    initCountdown(VIEWS[viewKey].countdownTarget, VIEWS[viewKey].countdownLabel, VIEWS[viewKey].countdownAlt);
   });
 
   // ── Landing Page ───────────────────────────────────
@@ -209,15 +217,41 @@
   }
 
   // ── Countdown Timer ────────────────────────────────
-  function initCountdown(targetDate, label) {
-    const countdownLabel = document.getElementById('countdown-label');
-    if (countdownLabel) {
-      countdownLabel.textContent = label;
+  function initCountdown(targetDate, label, altConfig) {
+    var countdownSection = document.querySelector('.countdown-section');
+    var countdownLabelEl = document.getElementById('countdown-label');
+    var currentTarget = targetDate;
+    var currentLabel = label;
+    var isShowingAlt = false;
+    var intervalId = null;
+
+    if (countdownLabelEl) countdownLabelEl.textContent = label;
+
+    // Set up toggle for dual-event views
+    if (altConfig && countdownSection) {
+      countdownSection.classList.add('countdown-toggleable');
+      var inner = countdownSection.querySelector('.countdown-inner');
+      var hint = document.createElement('p');
+      hint.className = 'countdown-toggle-hint';
+      hint.innerHTML = '<span class="countdown-toggle-dot active"></span><span class="countdown-toggle-dot"></span>';
+      if (inner) inner.appendChild(hint);
+
+      countdownSection.addEventListener('click', function () {
+        if (intervalId) clearInterval(intervalId);
+        isShowingAlt = !isShowingAlt;
+        currentTarget = isShowingAlt ? altConfig.target : targetDate;
+        currentLabel = isShowingAlt ? altConfig.label : label;
+        if (countdownLabelEl) countdownLabelEl.textContent = currentLabel;
+        var dots = hint.querySelectorAll('.countdown-toggle-dot');
+        dots[0].classList.toggle('active', !isShowingAlt);
+        dots[1].classList.toggle('active', isShowingAlt);
+        start();
+      });
     }
 
     function update() {
-      const now = new Date();
-      const diff = targetDate - now;
+      var now = new Date();
+      var diff = currentTarget - now;
 
       if (diff <= 0) {
         document.getElementById('countdown-days').textContent = '0';
@@ -227,18 +261,17 @@
         return;
       }
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById('countdown-days').textContent = days;
-      document.getElementById('countdown-hours').textContent = hours;
-      document.getElementById('countdown-minutes').textContent = minutes;
-      document.getElementById('countdown-seconds').textContent = seconds;
+      document.getElementById('countdown-days').textContent = Math.floor(diff / 86400000);
+      document.getElementById('countdown-hours').textContent = Math.floor((diff % 86400000) / 3600000);
+      document.getElementById('countdown-minutes').textContent = Math.floor((diff % 3600000) / 60000);
+      document.getElementById('countdown-seconds').textContent = Math.floor((diff % 60000) / 1000);
     }
 
-    update();
-    setInterval(update, 1000);
+    function start() {
+      update();
+      intervalId = setInterval(update, 1000);
+    }
+
+    start();
   }
 })();

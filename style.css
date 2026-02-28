@@ -770,6 +770,38 @@ body::before {
   text-transform: uppercase;
 }
 
+.countdown-toggleable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.countdown-toggleable:hover .countdown-inner {
+  opacity: 0.9;
+}
+
+.countdown-toggle-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 2rem;
+}
+
+.countdown-toggle-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold-dark);
+  opacity: 0.35;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.countdown-toggle-dot.active {
+  opacity: 1;
+  transform: scale(1.3);
+}
+
 .countdown {
   display: inline-flex;
   align-items: center;
