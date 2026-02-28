@@ -4,7 +4,7 @@
    =================================================== */
 
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Great+Vibes&family=Allura&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Great+Vibes&family=Allura&family=DM+Sans:wght@400;500;600;700&family=Manjari:wght@100;400;700&display=swap');
 
 /* ── Design Tokens ───────────────────────────────── */
 :root {
@@ -280,12 +280,35 @@ body::before {
   background-clip: text;
 }
 
+.hero-name-group {
+  display: block;
+  line-height: 1.1;
+}
+
+.hero-name-en {
+  display: block;
+  line-height: 1;
+}
+
+.hero-name-ml {
+  display: block;
+  font-family: 'Manjari', sans-serif;
+  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-weight: 100;
+  letter-spacing: 0.05em;
+  -webkit-text-fill-color: rgba(224, 200, 114, 0.8);
+  color: rgba(224, 200, 114, 0.8);
+  margin-top: -0.6em;
+  margin-bottom: 0;
+  line-height: 1.2;
+}
+
 .hero-ampersand {
   font-family: var(--font-hero-script);
   font-size: clamp(2rem, 5vw, 3.5rem);
   color: var(--color-gold);
   display: block;
-  margin: 0.25rem 0;
+  margin: 0.15rem 0;
 }
 
 .hero-date {
@@ -735,8 +758,8 @@ body::before {
 }
 
 .countdown-prelude {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.35em;
   text-transform: uppercase;
