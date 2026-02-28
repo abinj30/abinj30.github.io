@@ -4,7 +4,7 @@
    =================================================== */
 
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Great+Vibes&family=DM+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Great+Vibes&family=Allura&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 /* ── Design Tokens ───────────────────────────────── */
 :root {
@@ -28,6 +28,7 @@
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Cormorant Garamond', Garamond, serif;
   --font-script: 'Great Vibes', cursive;
+  --font-hero-script: 'Allura', 'Great Vibes', cursive;
 
   /* Spacing */
   --section-padding: 5rem 2rem;
@@ -268,7 +269,7 @@ body::before {
 }
 
 .hero-names {
-  font-family: var(--font-script);
+  font-family: var(--font-hero-script);
   font-size: clamp(3.5rem, 9vw, 6.5rem);
   font-weight: 700;
   line-height: 1.15;
@@ -280,7 +281,7 @@ body::before {
 }
 
 .hero-ampersand {
-  font-family: var(--font-script);
+  font-family: var(--font-hero-script);
   font-size: clamp(2rem, 5vw, 3.5rem);
   color: var(--color-gold);
   display: block;
