@@ -1252,10 +1252,66 @@ body::before {
   color: var(--color-burgundy);
 }
 
+/* ── Music Toggle Button ────────────────────────── */
+.music-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  background: rgba(93, 18, 35, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(247, 242, 229, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.3s, border-color 0.3s, background 0.3s, transform 0.2s;
+  padding: 0;
+}
+
+.music-btn:hover {
+  color: var(--color-cream);
+  border-color: var(--color-gold);
+  transform: scale(1.1);
+}
+
+/* When music is on: icon fully visible */
+.music-btn.music-playing {
+  color: var(--color-gold);
+  border-color: rgba(201, 168, 76, 0.7);
+}
+
+/* Show correct icon based on state */
+.music-icon-off {
+  display: none;
+}
+
+.music-btn.music-playing .music-icon-on {
+  display: block;
+}
+
+.music-btn.music-playing .music-icon-off {
+  display: none;
+}
+
+.music-btn:not(.music-playing) .music-icon-on {
+  display: none;
+}
+
+.music-btn:not(.music-playing) .music-icon-off {
+  display: block;
+}
+
 /* Print styles */
 @media print {
 
   .scroll-indicator,
+  .music-btn,
   .map-link,
   .phone-link,
   .whatsapp-link,

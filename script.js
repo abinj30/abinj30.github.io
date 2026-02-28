@@ -80,6 +80,7 @@
     applyView(VIEWS[viewKey]);
     initScrollReveal();
     initCountdown(VIEWS[viewKey].countdownTarget, VIEWS[viewKey].countdownLabel, VIEWS[viewKey].countdownAlt);
+    initAmbientAudio();
   });
 
   // ── Landing Page ───────────────────────────────────
@@ -214,6 +215,57 @@
         el.classList.add('visible');
       });
     }
+  }
+
+  // ── Ambient Audio ────────────────────────────────
+  function initAmbientAudio() {
+    var audio = document.getElementById('ambient-audio');
+    var btn = document.getElementById('music-btn');
+    if (!audio || !btn) return;
+
+    btn.hidden = false;
+    var playing = false;
+    audio.volume = 0.35;
+
+    function startPlayback() {
+      audio.play().then(function () {
+        playing = true;
+        btn.classList.add('music-playing');
+      }).catch(function () {
+        // Autoplay blocked by browser — will retry on first interaction
+        playing = false;
+        btn.classList.remove('music-playing');
+        waitForInteraction();
+      });
+    }
+
+    // Fallback: play on first user interaction if autoplay was blocked
+    function waitForInteraction() {
+      function onInteraction() {
+        document.removeEventListener('scroll', onInteraction, true);
+        document.removeEventListener('touchstart', onInteraction, true);
+        document.removeEventListener('click', onInteraction, true);
+        if (!playing) startPlayback();
+      }
+      document.addEventListener('scroll', onInteraction, { passive: true, capture: true, once: true });
+      document.addEventListener('touchstart', onInteraction, { passive: true, capture: true, once: true });
+      document.addEventListener('click', onInteraction, { capture: true, once: true });
+    }
+
+    // Try to autoplay immediately
+    startPlayback();
+
+    // Button toggles play/pause
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (playing) {
+        audio.pause();
+        playing = false;
+        btn.classList.remove('music-playing');
+      } else {
+        startPlayback();
+      }
+    });
   }
 
   // ── Countdown Timer ────────────────────────────────

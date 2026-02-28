@@ -339,6 +339,24 @@
 
   </div><!-- /invitation -->
 
+  <!-- Ambient audio -->
+  <audio id="ambient-audio" src="ambient.mp3" loop preload="none"></audio>
+
+  <!-- Floating music toggle (only shown for invitation views) -->
+  <button class="music-btn" id="music-btn" aria-label="Toggle ambient music" hidden>
+    <!-- music note icon -->
+    <svg class="music-icon music-icon-on" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" fill="none"
+        stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+    <!-- muted (crossed) icon -->
+    <svg class="music-icon music-icon-off" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18V5l12-2v13M9 18a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm12-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+      <line x1="3" y1="3" x2="21" y2="21" />
+    </svg>
+  </button>
+
   <script src="script.js"></script>
 </body>
 
