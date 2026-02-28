@@ -223,45 +223,61 @@
     var BETROTHAL = {
       dtstart: '20260426T103000Z',
       dtend:   '20260426T143000Z',
-      summary:  'Betrothal \u2014 Abin Joseph & Shanthal Denny',
-      description: '4:00 PM \u2014 Vijnanamatha Church\\, Thodupuzha\\n6:00 PM \u00b7 Reception \u2014 Josh Pavilion Auditorium\\, Thodupuzha',
+      summary:  'Betrothal - Abin Joseph & Shanthal Denny',
+      description: '4:00 PM - Vijnanamatha Church\\, Thodupuzha\\n6:00 PM - Reception at Josh Pavilion Auditorium\\, Thodupuzha',
       location: 'Vijnanamatha Church\\, Thodupuzha\\, Kerala',
-      uid: 'betrothal-20260426-abin-shanthal@wedding',
+      uid: 'betrothal-20260426-abin-shanthal@abinj30.github.io',
       filename: 'betrothal-abin-shanthal.ics',
     };
     var WEDDING = {
       dtstart: '20260509T053000Z',
       dtend:   '20260509T093000Z',
-      summary:  'Wedding \u2014 Abin Joseph & Shanthal Denny',
-      description: '11:00 AM \u2014 St. Joseph\'s Church\\, Kizhathadiyoor (St. Jude Shrine)\\, Pala\\n12:45 PM \u00b7 Reception \u2014 Sunstar Convention Centre\\, Pala',
-      location: 'St. Joseph\'s Church\\, Kizhathadiyoor\\, Pala\\, Kerala',
-      uid: 'wedding-20260509-abin-shanthal@wedding',
+      summary:  'Wedding - Abin Joseph & Shanthal Denny',
+      description: '11:00 AM - St. Josephs Church\\, Kizhathadiyoor (St. Jude Shrine)\\, Pala\\n12:45 PM - Reception at Sunstar Convention Centre\\, Pala',
+      location: 'St. Josephs Church\\, Kizhathadiyoor\\, Pala\\, Kerala',
+      uid: 'wedding-20260509-abin-shanthal@abinj30.github.io',
       filename: 'wedding-abin-shanthal.ics',
     };
 
+    function pad2(n) { return n < 10 ? '0' + n : '' + n; }
+
+    function dtstamp() {
+      var d = new Date();
+      return d.getUTCFullYear() +
+        pad2(d.getUTCMonth() + 1) +
+        pad2(d.getUTCDate()) + 'T' +
+        pad2(d.getUTCHours()) +
+        pad2(d.getUTCMinutes()) +
+        pad2(d.getUTCSeconds()) + 'Z';
+    }
+
     function buildICS(ev) {
+      var stamp = dtstamp();
       return [
         'BEGIN:VCALENDAR',
         'VERSION:2.0',
-        'PRODID:-//Abin & Shanthal Wedding//EN',
+        'PRODID:-//Abin Shanthal Wedding//EN',
         'CALSCALE:GREGORIAN',
         'METHOD:PUBLISH',
         'BEGIN:VEVENT',
+        'UID:' + ev.uid,
+        'DTSTAMP:' + stamp,
         'DTSTART:' + ev.dtstart,
         'DTEND:' + ev.dtend,
         'SUMMARY:' + ev.summary,
         'DESCRIPTION:' + ev.description,
         'LOCATION:' + ev.location,
-        'UID:' + ev.uid,
+        'STATUS:CONFIRMED',
+        'SEQUENCE:0',
         'BEGIN:VALARM',
         'TRIGGER:-P7D',
         'ACTION:DISPLAY',
-        'DESCRIPTION:1 week away \u2014 ' + ev.summary,
+        'DESCRIPTION:Reminder - ' + ev.summary + ' is in 1 week',
         'END:VALARM',
         'BEGIN:VALARM',
         'TRIGGER:-P1D',
         'ACTION:DISPLAY',
-        'DESCRIPTION:Tomorrow \u2014 ' + ev.summary,
+        'DESCRIPTION:Reminder - ' + ev.summary + ' is tomorrow',
         'END:VALARM',
         'END:VEVENT',
         'END:VCALENDAR',
