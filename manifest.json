@@ -1,0 +1,24 @@
+{
+    "name": "Abin & Shanthal — Wedding Invitation",
+    "short_name": "A & S Wedding",
+    "description": "You are cordially invited to celebrate the marriage of Abin Joseph and Shanthal Denny.",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#5D1223",
+    "theme_color": "#5D1223",
+    "orientation": "portrait",
+    "icons": [
+        {
+            "src": "icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
+}
