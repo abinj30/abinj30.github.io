@@ -80,7 +80,6 @@
     applyView(VIEWS[viewKey]);
     initScrollReveal();
     initCountdown(VIEWS[viewKey].countdownTarget, VIEWS[viewKey].countdownLabel, VIEWS[viewKey].countdownAlt);
-    initCalendarButtons(VIEWS[viewKey]);
     initAmbientAudio();
   });
 
@@ -216,105 +215,6 @@
         el.classList.add('visible');
       });
     }
-  }
-
-  // ── Add to Calendar ──────────────────────────────
-  function initCalendarButtons(config) {
-    var BETROTHAL = {
-      dtstart: '20260426T103000Z',
-      dtend:   '20260426T143000Z',
-      summary:  'Betrothal - Abin Joseph & Shanthal Denny',
-      description: '4:00 PM - Vijnanamatha Church\\, Thodupuzha\\n6:00 PM - Reception at Josh Pavilion Auditorium\\, Thodupuzha',
-      location: 'Vijnanamatha Church\\, Thodupuzha\\, Kerala',
-      uid: 'betrothal-20260426-abin-shanthal@abinj30.github.io',
-      filename: 'betrothal-abin-shanthal.ics',
-    };
-    var WEDDING = {
-      dtstart: '20260509T053000Z',
-      dtend:   '20260509T093000Z',
-      summary:  'Wedding - Abin Joseph & Shanthal Denny',
-      description: '11:00 AM - St. Josephs Church\\, Kizhathadiyoor (St. Jude Shrine)\\, Pala\\n12:45 PM - Reception at Sunstar Convention Centre\\, Pala',
-      location: 'St. Josephs Church\\, Kizhathadiyoor\\, Pala\\, Kerala',
-      uid: 'wedding-20260509-abin-shanthal@abinj30.github.io',
-      filename: 'wedding-abin-shanthal.ics',
-    };
-
-    function pad2(n) { return n < 10 ? '0' + n : '' + n; }
-
-    function dtstamp() {
-      var d = new Date();
-      return d.getUTCFullYear() +
-        pad2(d.getUTCMonth() + 1) +
-        pad2(d.getUTCDate()) + 'T' +
-        pad2(d.getUTCHours()) +
-        pad2(d.getUTCMinutes()) +
-        pad2(d.getUTCSeconds()) + 'Z';
-    }
-
-    /* RFC 5545: fold lines longer than 75 octets */
-    function foldLine(line) {
-      if (line.length <= 75) return line;
-      var result = line.substring(0, 75);
-      var pos = 75;
-      while (pos < line.length) {
-        result += '\r\n ' + line.substring(pos, pos + 74);
-        pos += 74;
-      }
-      return result;
-    }
-
-    function buildICS(ev) {
-      var stamp = dtstamp();
-      var lines = [
-        'BEGIN:VCALENDAR',
-        'VERSION:2.0',
-        'PRODID:-//Abin Shanthal Wedding//NONSGML v1.0//EN',
-        'CALSCALE:GREGORIAN',
-        'METHOD:PUBLISH',
-        'BEGIN:VEVENT',
-        'UID:' + ev.uid,
-        'DTSTAMP:' + stamp,
-        'DTSTART:' + ev.dtstart,
-        'DTEND:' + ev.dtend,
-        'SUMMARY:' + ev.summary,
-        'DESCRIPTION:' + ev.description,
-        'LOCATION:' + ev.location,
-        'STATUS:CONFIRMED',
-        'SEQUENCE:0',
-        'BEGIN:VALARM',
-        'TRIGGER:-P7D',
-        'ACTION:DISPLAY',
-        'DESCRIPTION:Reminder',
-        'END:VALARM',
-        'BEGIN:VALARM',
-        'TRIGGER:-P1D',
-        'ACTION:DISPLAY',
-        'DESCRIPTION:Reminder',
-        'END:VALARM',
-        'END:VEVENT',
-        'END:VCALENDAR',
-      ];
-      return lines.map(foldLine).join('\r\n');
-    }
-
-    function attach(btnId, ev) {
-      var btn = document.getElementById(btnId);
-      if (!btn) return;
-      btn.addEventListener('click', function () {
-        var blob = new Blob([buildICS(ev)], { type: 'text/calendar;charset=utf-8' });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = ev.filename;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      });
-    }
-
-    if (config.showBetrothal) attach('cal-betrothal', BETROTHAL);
-    if (config.showWedding)   attach('cal-wedding',   WEDDING);
   }
 
   // ── Ambient Audio ──────────────────────────────────

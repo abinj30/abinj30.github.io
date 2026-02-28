@@ -730,44 +730,6 @@ body::before {
   fill: currentColor;
 }
 
-.cal-action {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.cal-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.6rem 1.4rem;
-  background: rgba(201, 168, 76, 0.14);
-  color: var(--color-burgundy);
-  border: 1px solid rgba(166, 138, 62, 0.55);
-  border-radius: 50px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.cal-link:hover {
-  background: var(--color-burgundy);
-  color: var(--color-cream);
-  border-color: var(--color-burgundy);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 15px rgba(107, 29, 42, 0.28);
-}
-
-.cal-link svg {
-  width: 14px;
-  height: 14px;
-  stroke: currentColor;
-  flex-shrink: 0;
-}
-
 /* ── COUNTDOWN ───────────────────────────────────── */
 .countdown-section {
   padding: 4rem 2rem;
