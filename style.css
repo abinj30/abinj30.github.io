@@ -53,14 +53,7 @@
   --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ── Bride Theme (Saree Colors) ─────────────── */
-body.theme-bride {
-  --color-burgundy: #B24640;
-  /* Refined from user's #CD5449/#AA5F5A */
-  --color-burgundy-deep: #8E302A;
-  --color-burgundy-light: #CC5C55;
-  --color-text: #422927;
-}
+
 
 /* ── Reset & Base ────────────────────────────────── */
 *,
@@ -768,12 +761,13 @@ body::before {
 }
 
 .countdown-section h3 {
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
   color: var(--color-burgundy);
   margin-bottom: 2.5rem;
-  font-weight: 500;
-  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
 .countdown {
@@ -868,12 +862,13 @@ body::before {
 
 .compliments-label {
   position: relative;
-  font-size: 0.85rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
   font-weight: 600;
-  letter-spacing: 0.35em;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-gold-light);
-  opacity: 0.8;
+  opacity: 0.9;
   margin-bottom: 1.5rem;
 }
 
@@ -882,11 +877,12 @@ body::before {
 }
 
 .sibling-name {
-  font-family: var(--font-script);
-  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 400;
-  color: var(--color-cream);
-  line-height: 1.3;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  line-height: 1.5;
   background: linear-gradient(135deg, var(--color-cream) 0%, var(--color-gold-light) 60%, var(--color-cream) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -894,15 +890,9 @@ body::before {
 }
 
 .sibling-name.secondary {
-  font-family: var(--font-display);
-  font-size: clamp(1rem, 2vw, 1.25rem);
-  letter-spacing: 0.12em;
-  font-weight: 400;
-  font-style: italic;
-  opacity: 0.75;
-  background: none;
-  -webkit-text-fill-color: var(--color-gold-light);
-  margin-top: 0.4rem;
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  opacity: 0.7;
+  margin-top: 0.3rem;
 }
 
 /* ── FOOTER ──────────────────────────────────────── */
@@ -924,11 +914,12 @@ body::before {
 
 .closing-message {
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
   color: var(--color-burgundy);
-  font-weight: 500;
+  font-weight: 400;
   font-style: italic;
-  line-height: 1.5;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
 }
 
 .footer-divider {
@@ -954,12 +945,13 @@ body::before {
   background: #25D366;
   color: var(--color-white);
   border-radius: 50px;
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   transition: var(--transition);
   text-decoration: none;
-  letter-spacing: 0.08em;
 }
 
 .whatsapp-link:hover {
@@ -973,8 +965,9 @@ body::before {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: var(--font-display);
-  font-size: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
   color: var(--color-text-muted);
   letter-spacing: 0.04em;
 }

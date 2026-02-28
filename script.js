@@ -120,7 +120,10 @@
     var brideFirst = document.getElementById('bride-card');
 
     if (config.perspective === 'bride' && coupleContainer && groomFirst && brideFirst) {
-      coupleContainer.insertBefore(brideFirst, coupleContainer.firstChild);
+      // Rebuild order: bride | divider | groom (to match 1fr auto 1fr grid)
+      var coupleDiv = coupleContainer.querySelector('.couple-divider');
+      [brideFirst, coupleDiv, groomFirst].forEach(function(el){ coupleContainer.removeChild(el); });
+      [brideFirst, coupleDiv, groomFirst].forEach(function(el){ coupleContainer.appendChild(el); });
     }
 
     // Update invitation text based on perspective

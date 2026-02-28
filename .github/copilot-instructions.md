@@ -35,4 +35,4 @@ URL query parameter `?view=` selects one of four views. No `?view=` shows a land
 - Before making design changes, screenshot the current state to avoid regressions. Keep screenshots in `.playwright-mcp` directory for reference.
 
 ## Deployment
-GitHub Pages from `main` branch, `/ (root)` directory. No CI — push to `main` deploys automatically.
+GitHub Pages from `main` branch, `/ (root)` directory. No CI — push to `main` deploys automatically. The domain is `abinj30.github.io`.
