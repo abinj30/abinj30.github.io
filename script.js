@@ -40,7 +40,7 @@
       countdownTarget: new Date('2026-04-26T16:00:00+05:30'),
       countdownLabel: 'Until the Betrothal',
       compliments: [
-        { name: 'Sharon', primary: true },
+        { name: 'Sharon Denny', primary: true },
       ],
     },
     'bride-both': {
@@ -51,7 +51,7 @@
       countdownTarget: new Date('2026-04-26T16:00:00+05:30'),
       countdownLabel: 'Until the Betrothal',
       compliments: [
-        { name: 'Sharon', primary: true },
+        { name: 'Sharon Denny', primary: true },
       ],
     },
   };
@@ -124,6 +124,16 @@
       var coupleDiv = coupleContainer.querySelector('.couple-divider');
       [brideFirst, coupleDiv, groomFirst].forEach(function(el){ coupleContainer.removeChild(el); });
       [brideFirst, coupleDiv, groomFirst].forEach(function(el){ coupleContainer.appendChild(el); });
+    }
+
+    // Perspective: swap hero names so bride name appears first in bride views
+    var heroNames = document.querySelector('.hero-names');
+    var heroGroomName = document.getElementById('hero-groom-name');
+    var heroBrideName = document.getElementById('hero-bride-name');
+    var heroAmp = heroNames ? heroNames.querySelector('.hero-ampersand') : null;
+    if (config.perspective === 'bride' && heroNames && heroGroomName && heroBrideName && heroAmp) {
+      [heroBrideName, heroAmp, heroGroomName].forEach(function(el){ heroNames.removeChild(el); });
+      [heroBrideName, heroAmp, heroGroomName].forEach(function(el){ heroNames.appendChild(el); });
     }
 
     // Update invitation text based on perspective

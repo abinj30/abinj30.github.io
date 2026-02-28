@@ -4,16 +4,16 @@ A beautiful digital wedding invitation for **Abin Joseph & Shanthal Denny**, hos
 
 ## 🔗 Shareable Links
 
-Once deployed, share these links with your guests:
+Share these links with your guests (includes WhatsApp preview image for each):
 
 | Link | Who sends | What guests see |
 |------|-----------|-----------------|
-| `your-url/?view=groom-wedding` | Abin | Wedding only |
-| `your-url/?view=groom-both` | Abin | Betrothal + Wedding |
-| `your-url/?view=bride-betrothal` | Shanthal | Betrothal only |
-| `your-url/?view=bride-both` | Shanthal | Betrothal + Wedding |
+| `your-url/groom-wedding.html` | Abin | Wedding only |
+| `your-url/groom-both.html` | Abin | Betrothal + Wedding |
+| `your-url/bride-betrothal.html` | Shanthal | Betrothal only |
+| `your-url/bride-both.html` | Shanthal | Betrothal + Wedding |
 
-The base URL (without any `?view=` parameter) shows a landing page with links to all four views.
+The base URL (`your-url/`) shows a landing page with links to all four views.
 
 ## 🚀 Deploy to GitHub Pages
 
@@ -30,3 +30,5 @@ Your invitation will be live at `https://<username>.github.io/<repo-name>/`
 - `index.html` — Main invitation page
 - `style.css` — Design system and styles
 - `script.js` — View routing and animations
+- `groom-wedding.html`, `groom-both.html`, `bride-betrothal.html`, `bride-both.html` — Per-view entry pages with WhatsApp/OG preview meta
+- `og-groom-wedding.jpg`, `og-groom-both.jpg`, `og-bride-betrothal.jpg`, `og-bride-both.jpg` — Per-view preview images (1200×630)
