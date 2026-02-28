@@ -158,7 +158,7 @@
       }
     } else {
       if (invitationHeading) {
-        invitationHeading.innerHTML = 'Denny Joseph &amp; Jisha Denny<br>cordially invite you';
+        invitationHeading.innerHTML = 'Denny &amp; Jisha<br>cordially invite you';
       }
       if (invitationBody) {
         invitationBody.textContent =
