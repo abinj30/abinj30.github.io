@@ -80,6 +80,7 @@
     applyView(VIEWS[viewKey]);
     initScrollReveal();
     initCountdown(VIEWS[viewKey].countdownTarget, VIEWS[viewKey].countdownLabel, VIEWS[viewKey].countdownAlt);
+    initCalendarButtons(VIEWS[viewKey]);
     initAmbientAudio();
   });
 
@@ -217,7 +218,77 @@
     }
   }
 
-  // ── Ambient Audio ────────────────────────────────
+  // ── Add to Calendar ──────────────────────────────
+  function initCalendarButtons(config) {
+    var BETROTHAL = {
+      dtstart: '20260426T103000Z',
+      dtend:   '20260426T143000Z',
+      summary:  'Betrothal \u2014 Abin Joseph & Shanthal Denny',
+      description: '4:00 PM \u2014 Vijnanamatha Church\\, Thodupuzha\\n6:00 PM \u00b7 Reception \u2014 Josh Pavilion Auditorium\\, Thodupuzha',
+      location: 'Vijnanamatha Church\\, Thodupuzha\\, Kerala',
+      uid: 'betrothal-20260426-abin-shanthal@wedding',
+      filename: 'betrothal-abin-shanthal.ics',
+    };
+    var WEDDING = {
+      dtstart: '20260509T053000Z',
+      dtend:   '20260509T093000Z',
+      summary:  'Wedding \u2014 Abin Joseph & Shanthal Denny',
+      description: '11:00 AM \u2014 St. Joseph\'s Church\\, Kizhathadiyoor (St. Jude Shrine)\\, Pala\\n12:45 PM \u00b7 Reception \u2014 Sunstar Convention Centre\\, Pala',
+      location: 'St. Joseph\'s Church\\, Kizhathadiyoor\\, Pala\\, Kerala',
+      uid: 'wedding-20260509-abin-shanthal@wedding',
+      filename: 'wedding-abin-shanthal.ics',
+    };
+
+    function buildICS(ev) {
+      return [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Abin & Shanthal Wedding//EN',
+        'CALSCALE:GREGORIAN',
+        'METHOD:PUBLISH',
+        'BEGIN:VEVENT',
+        'DTSTART:' + ev.dtstart,
+        'DTEND:' + ev.dtend,
+        'SUMMARY:' + ev.summary,
+        'DESCRIPTION:' + ev.description,
+        'LOCATION:' + ev.location,
+        'UID:' + ev.uid,
+        'BEGIN:VALARM',
+        'TRIGGER:-P7D',
+        'ACTION:DISPLAY',
+        'DESCRIPTION:1 week away \u2014 ' + ev.summary,
+        'END:VALARM',
+        'BEGIN:VALARM',
+        'TRIGGER:-P1D',
+        'ACTION:DISPLAY',
+        'DESCRIPTION:Tomorrow \u2014 ' + ev.summary,
+        'END:VALARM',
+        'END:VEVENT',
+        'END:VCALENDAR',
+      ].join('\r\n');
+    }
+
+    function attach(btnId, ev) {
+      var btn = document.getElementById(btnId);
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var blob = new Blob([buildICS(ev)], { type: 'text/calendar;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = ev.filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    }
+
+    if (config.showBetrothal) attach('cal-betrothal', BETROTHAL);
+    if (config.showWedding)   attach('cal-wedding',   WEDDING);
+  }
+
+  // ── Ambient Audio ──────────────────────────────────
   function initAmbientAudio() {
     var audio = document.getElementById('ambient-audio');
     var btn = document.getElementById('music-btn');
