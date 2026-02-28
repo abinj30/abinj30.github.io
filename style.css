@@ -4,7 +4,7 @@
    =================================================== */
 
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Tangerine:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Great+Vibes&family=DM+Sans:wght@400;500;600;700&display=swap');
 
 /* ── Design Tokens ───────────────────────────────── */
 :root {
@@ -19,15 +19,15 @@
   --color-cream-dark: #F5EDE0;
   --color-ivory: #FFFEF9;
   --color-text: #3A2A2A;
-  --color-text-light: #6B5A5A;
-  --color-text-muted: #9A8A8A;
+  --color-text-light: #5A4545;
+  --color-text-muted: #7A6A6A;
   --color-white: #FFFFFF;
   --color-overlay: rgba(74, 14, 26, 0.65);
 
   /* Typography */
   --font-display: 'Playfair Display', Georgia, serif;
   --font-body: 'Cormorant Garamond', Garamond, serif;
-  --font-script: 'Tangerine', cursive;
+  --font-script: 'Great Vibes', cursive;
 
   /* Spacing */
   --section-padding: 5rem 2rem;
@@ -43,8 +43,8 @@
   --border-ornament: 2px solid var(--color-gold);
 
   /* Shadows */
-  --shadow-card: 0 8px 32px rgba(107, 29, 42, 0.08), 0 2px 8px rgba(0,0,0,0.04);
-  --shadow-card-hover: 0 12px 48px rgba(107, 29, 42, 0.12), 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-card: 0 8px 32px rgba(107, 29, 42, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-card-hover: 0 12px 48px rgba(107, 29, 42, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
   --shadow-glow: 0 0 40px rgba(201, 168, 76, 0.15);
 
   /* Transitions */
@@ -54,7 +54,8 @@
 
 /* ── Bride Theme (Saree Colors) ─────────────── */
 body.theme-bride {
-  --color-burgundy: #B24640; /* Refined from user's #CD5449/#AA5F5A */
+  --color-burgundy: #B24640;
+  /* Refined from user's #CD5449/#AA5F5A */
   --color-burgundy-deep: #8E302A;
   --color-burgundy-light: #CC5C55;
   --color-text: #422927;
@@ -76,7 +77,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  font-weight: 400;
+  font-weight: 500;
   color: var(--color-text);
   background-color: var(--color-cream);
   line-height: 1.7;
@@ -319,9 +320,22 @@ body::before {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-  40% { transform: translateX(-50%) translateY(-8px); }
-  60% { transform: translateX(-50%) translateY(-4px); }
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  40% {
+    transform: translateX(-50%) translateY(-8px);
+  }
+
+  60% {
+    transform: translateX(-50%) translateY(-4px);
+  }
 }
 
 /* ── INVITATION TEXT SECTION ─────────────────────── */
@@ -348,11 +362,12 @@ body::before {
 }
 
 .invitation-text p {
-  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  font-size: clamp(1.2rem, 2vw, 1.4rem);
   color: var(--color-text-light);
   line-height: 1.9;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: 500;
 }
 
 
@@ -392,7 +407,8 @@ body::before {
 
 .person-card .role-label {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--color-gold-dark);
@@ -401,44 +417,47 @@ body::before {
 
 .person-card h3 {
   font-family: var(--font-script);
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(2.2rem, 5vw, 3rem);
   color: var(--color-burgundy);
   font-weight: 400;
   margin-bottom: 1.25rem;
 }
 
 .person-card .parent-info {
-  font-size: clamp(1.1rem, 2vw, 1.3rem);
-  color: var(--color-text-light);
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
+  color: var(--color-text);
   margin-bottom: 0.35rem;
   line-height: 1.7;
+  font-weight: 500;
 }
 
 .person-card .parent-info .label {
-  color: var(--color-text-muted);
-  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+  color: var(--color-text-light);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-weight: 400;
 }
 
 .person-card .address {
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
-  color: var(--color-text-muted);
+  font-size: clamp(1.05rem, 1.5vw, 1.15rem);
+  color: var(--color-text-light);
   margin-top: 1rem;
   font-style: italic;
+  font-weight: 400;
 }
 
 /* ── EVENT SECTION ───────────────────────────────── */
 .event-section {
-  padding: var(--section-padding);
+  padding: 4rem 2rem;
   text-align: center;
 }
 
 .event-section-alt {
-  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream-dark) 100%);
+  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream-dark) 50%, var(--color-cream) 100%);
 }
 
 /* Section Header */
 .section-header {
-  margin-bottom: 3.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .section-eyebrow {
@@ -446,7 +465,7 @@ body::before {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .eyebrow-line {
@@ -462,7 +481,8 @@ body::before {
 
 .eyebrow-label {
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--color-gold-dark);
@@ -474,15 +494,83 @@ body::before {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   color: var(--color-burgundy);
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
 }
 
-.section-subtext {
+/* ── DATE HIGHLIGHT ──────────────────────────────── */
+.date-highlight {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto 2rem;
+  max-width: 280px;
+  position: relative;
+  padding: 1.25rem 2rem;
+  background: var(--color-white);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgba(107, 29, 42, 0.06), 0 1px 6px rgba(201, 168, 76, 0.08);
+}
+
+.date-highlight::before,
+.date-highlight::after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-gold));
+  top: 50%;
+}
+
+.date-highlight::before {
+  right: 100%;
+  margin-right: 12px;
+}
+
+.date-highlight::after {
+  left: 100%;
+  margin-left: 12px;
+  background: linear-gradient(90deg, var(--color-gold), transparent);
+}
+
+.date-month {
   font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--color-text-muted);
-  letter-spacing: 0.15em;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 500;
   font-style: italic;
+  color: var(--color-burgundy);
+  letter-spacing: 0.05em;
+  text-align: right;
+  line-height: 1.2;
+  padding-right: 0.85rem;
+  border-right: 2px solid var(--color-gold);
+}
+
+.date-day {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 3.4rem);
+  font-weight: 700;
+  color: var(--color-burgundy);
+  line-height: 1;
+  padding: 0 0.75rem;
+  background: linear-gradient(135deg, var(--color-burgundy) 0%, var(--color-burgundy-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.date-year {
+  font-family: var(--font-display);
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-burgundy);
+  letter-spacing: 0.05em;
+  text-align: left;
+  line-height: 1.2;
+  padding-left: 0.85rem;
+  border-left: 2px solid var(--color-gold);
 }
 
 /* ── TIMELINE LAYOUT ─────────────────────────────── */
@@ -491,43 +579,45 @@ body::before {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 0;
 }
 
 .timeline-card {
   background: var(--color-white);
   border: 1px solid rgba(201, 168, 76, 0.18);
   border-radius: var(--radius);
-  padding: 1.75rem 2rem;
+  padding: 1.5rem 1.75rem;
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
-  text-align: left;
+  text-align: center;
 }
 
 .timeline-card::before {
   content: '';
   position: absolute;
-  left: 0;
+  left: 50%;
   top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg, var(--color-burgundy), var(--color-gold));
-  border-radius: 3px 0 0 3px;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-burgundy), var(--color-gold));
+  border-radius: 0 0 3px 3px;
 }
 
 .timeline-badge {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-gold-dark);
   background: rgba(201, 168, 76, 0.1);
   border: 1px solid rgba(201, 168, 76, 0.25);
   border-radius: 50px;
-  padding: 0.25rem 0.85rem;
-  margin-bottom: 0.75rem;
+  padding: 0.2rem 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
 .timeline-card h3 {
@@ -535,13 +625,14 @@ body::before {
   font-size: clamp(1.15rem, 2.5vw, 1.35rem);
   color: var(--color-burgundy);
   font-weight: 600;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .timeline-location {
-  font-size: clamp(0.95rem, 1.5vw, 1.05rem);
-  color: var(--color-text-muted);
-  margin-bottom: 0.6rem;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 /* Divider between timeline events */
@@ -549,22 +640,30 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
+  padding: 0.85rem 0;
 }
 
 .timeline-divider-line {
   flex: 1;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent);
 }
 
-.timeline-divider span {
+.timeline-divider-text {
   font-family: var(--font-body);
   font-size: 0.8rem;
+  font-weight: 600;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   white-space: nowrap;
+}
+
+.timeline-divider-ornament {
+  font-size: 0.55rem;
+  color: var(--color-gold);
+  line-height: 1;
 }
 
 /* Map Link Button */
@@ -614,9 +713,9 @@ body::before {
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg,
-    rgba(201,168,76,0.06) 0%,
-    transparent 50%,
-    rgba(107,29,42,0.04) 100%);
+      rgba(201, 168, 76, 0.06) 0%,
+      transparent 50%,
+      rgba(107, 29, 42, 0.04) 100%);
   pointer-events: none;
 }
 
@@ -629,7 +728,8 @@ body::before {
 
 .countdown-prelude {
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--color-gold-dark);
@@ -653,8 +753,8 @@ body::before {
   border: 1px solid rgba(201, 168, 76, 0.25);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-card);
-  padding: 1.75rem 2.5rem;
-  flex-wrap: wrap;
+  padding: 1.5rem 1.5rem;
+  flex-wrap: nowrap;
   justify-content: center;
 }
 
@@ -662,29 +762,29 @@ body::before {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 72px;
-  padding: 0 1.25rem;
+  min-width: 56px;
+  padding: 0 0.75rem;
   position: relative;
 }
 
-.countdown-item + .countdown-item::before {
+.countdown-item+.countdown-item::before {
   display: none;
 }
 
 .countdown-sep {
-  font-family: var(--font-body);
-  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
   font-weight: 300;
   color: var(--color-gold);
   line-height: 1;
   align-self: flex-start;
-  padding-top: 0.15rem;
+  padding-top: 0.25rem;
 }
 
 .countdown-number {
-  font-family: var(--font-body);
-  font-size: clamp(2.2rem, 5vw, 3rem);
-  font-weight: 600;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
   color: var(--color-burgundy);
   line-height: 1;
   min-width: 2ch;
@@ -692,11 +792,12 @@ body::before {
 }
 
 .countdown-label {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  letter-spacing: 0.18em;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   margin-top: 0.5rem;
 }
 
@@ -736,7 +837,8 @@ body::before {
 
 .compliments-label {
   position: relative;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--color-gold-light);
@@ -750,7 +852,7 @@ body::before {
 
 .sibling-name {
   font-family: var(--font-script);
-  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
   font-weight: 400;
   color: var(--color-cream);
   line-height: 1.3;
@@ -871,7 +973,7 @@ body::before {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .reveal.visible {
@@ -879,23 +981,48 @@ body::before {
   transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 0.15s; }
-.reveal-delay-2 { transition-delay: 0.3s; }
-.reveal-delay-3 { transition-delay: 0.45s; }
+.reveal-delay-1 {
+  transition-delay: 0.15s;
+}
+
+.reveal-delay-2 {
+  transition-delay: 0.3s;
+}
+
+.reveal-delay-3 {
+  transition-delay: 0.45s;
+}
 
 /* Hero entrance animations */
-.hero-content > * {
+.hero-content>* {
   opacity: 0;
   transform: translateY(20px);
   animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.hero-content > :nth-child(1) { animation-delay: 0.3s; }
-.hero-content > :nth-child(2) { animation-delay: 0.6s; }
-.hero-content > :nth-child(3) { animation-delay: 0.8s; }
-.hero-content > :nth-child(4) { animation-delay: 1s; }
-.hero-content > :nth-child(5) { animation-delay: 1.2s; }
-.hero-content > :nth-child(6) { animation-delay: 1.4s; }
+.hero-content> :nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.hero-content> :nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.hero-content> :nth-child(3) {
+  animation-delay: 0.8s;
+}
+
+.hero-content> :nth-child(4) {
+  animation-delay: 1s;
+}
+
+.hero-content> :nth-child(5) {
+  animation-delay: 1.2s;
+}
+
+.hero-content> :nth-child(6) {
+  animation-delay: 1.4s;
+}
 
 @keyframes fadeInUp {
   to {
@@ -925,28 +1052,70 @@ body::before {
   animation: float-particle 8s infinite;
 }
 
-.hero .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
-.hero .particle:nth-child(2) { left: 25%; animation-delay: 1.5s; }
-.hero .particle:nth-child(3) { left: 40%; animation-delay: 3s; }
-.hero .particle:nth-child(4) { left: 55%; animation-delay: 0.8s; }
-.hero .particle:nth-child(5) { left: 70%; animation-delay: 2.2s; }
-.hero .particle:nth-child(6) { left: 85%; animation-delay: 4s; }
-.hero .particle:nth-child(7) { left: 15%; animation-delay: 5s; }
-.hero .particle:nth-child(8) { left: 60%; animation-delay: 3.5s; }
-.hero .particle:nth-child(9) { left: 90%; animation-delay: 1s; }
-.hero .particle:nth-child(10) { left: 35%; animation-delay: 6s; }
+.hero .particle:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.hero .particle:nth-child(2) {
+  left: 25%;
+  animation-delay: 1.5s;
+}
+
+.hero .particle:nth-child(3) {
+  left: 40%;
+  animation-delay: 3s;
+}
+
+.hero .particle:nth-child(4) {
+  left: 55%;
+  animation-delay: 0.8s;
+}
+
+.hero .particle:nth-child(5) {
+  left: 70%;
+  animation-delay: 2.2s;
+}
+
+.hero .particle:nth-child(6) {
+  left: 85%;
+  animation-delay: 4s;
+}
+
+.hero .particle:nth-child(7) {
+  left: 15%;
+  animation-delay: 5s;
+}
+
+.hero .particle:nth-child(8) {
+  left: 60%;
+  animation-delay: 3.5s;
+}
+
+.hero .particle:nth-child(9) {
+  left: 90%;
+  animation-delay: 1s;
+}
+
+.hero .particle:nth-child(10) {
+  left: 35%;
+  animation-delay: 6s;
+}
 
 @keyframes float-particle {
   0% {
     transform: translateY(100vh) scale(0);
     opacity: 0;
   }
+
   10% {
     opacity: 0.6;
   }
+
   90% {
     opacity: 0.1;
   }
+
   100% {
     transform: translateY(-20vh) scale(1);
     opacity: 0;
@@ -984,17 +1153,17 @@ body::before {
   }
 
   .countdown {
-    gap: 0.5rem;
-    padding: 1.5rem 1rem;
+    gap: 0;
+    padding: 1.25rem 0.75rem;
   }
 
   .countdown-item {
-    min-width: 60px;
-    padding: 0 0.5rem;
+    min-width: 48px;
+    padding: 0 0.4rem;
   }
 
   .countdown-sep {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
 
   .links-grid {
@@ -1028,6 +1197,7 @@ body::before {
 
 /* Print styles */
 @media print {
+
   .scroll-indicator,
   .map-link,
   .whatsapp-link,
