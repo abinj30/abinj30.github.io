@@ -266,6 +266,23 @@
         startPlayback();
       }
     });
+
+    // Handle Page Visibility to pause audio when user switches tabs or minimizes browser
+    var wasPlayingBeforeHidden = false;
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        wasPlayingBeforeHidden = playing;
+        if (playing) {
+          audio.pause();
+          playing = false;
+          btn.classList.remove('music-playing');
+        }
+      } else {
+        if (wasPlayingBeforeHidden && !playing) {
+          startPlayback();
+        }
+      }
+    });
   }
 
   // ── Countdown Timer ────────────────────────────────
